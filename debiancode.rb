@@ -1,12 +1,5 @@
-#!/usr/bin/env ruby
-
-require 'open-uri'
-require 'pp'
 require 'nokogiri'
+require 'open-uri'
+doc = Nokogiri::HTML(open('https://wiki.debian.org/DebianReleases'))
 
-url = 'https://wiki.debian.org/DebianReleases'
-html = open(url).read
-
-puts html
-# doc = Nokogiri::HTML.parse(html)
-# pp doc
+doc.xpath('//h2').inner_text
